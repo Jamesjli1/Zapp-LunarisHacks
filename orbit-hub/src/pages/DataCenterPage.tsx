@@ -96,15 +96,15 @@ export function DataCenterPage() {
 
   return (
     <div className="space-y-4">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-slate-50 flex items-center gap-2">
-            <Database className="h-4 w-4 text-sky-400" />
+          <h2 className="text-2xl font-semibold text-slate-900 flex items-center gap-2">
+            <Database className="h-5 w-5 text-orange-500" />
             Data Center
           </h2>
-          <p className="text-xs text-slate-400 max-w-xl">
+          <p className="text-sm text-slate-600 max-w-xl">
             Paste the JSON payload from your Chrome extension. Orbit Hub will store it under
-            <code className="mx-1 rounded bg-slate-900 px-1 py-0.5 text-[11px] text-sky-200">
+            <code className="mx-1 rounded bg-slate-900 px-1 py-0.5 text-xs text-sky-200">
               current_orbit_data
             </code>
             in localStorage.
@@ -112,13 +112,13 @@ export function DataCenterPage() {
         </div>
 
         {currentStats && (
-          <div className="inline-flex items-center gap-3 rounded-xl border border-slate-700/80 bg-slate-900/80 px-3 py-2 text-[11px] text-slate-300">
-            <span className="text-slate-400">Current orbit:</span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-slate-800/90 px-2 py-0.5">
+          <div className="inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+            <span className="text-slate-500">Current orbit:</span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
               {currentStats.profiles} profiles
             </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-slate-800/90 px-2 py-0.5">
+            <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2 py-0.5">
               <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
               {currentStats.conversations} conversations
             </span>
@@ -128,17 +128,17 @@ export function DataCenterPage() {
 
       <form
         onSubmit={handleSubmit}
-        className="grid gap-3 rounded-2xl border border-slate-800/80 bg-slate-950/70 p-3 sm:p-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:gap-4"
+        className="grid gap-3 rounded-2xl border border-slate-200 bg-white p-3 sm:p-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:gap-4 shadow-sm"
       >
         <div className="space-y-2">
           <div className="flex items-center justify-between gap-2">
-            <label className="text-xs font-medium text-slate-300">
+            <label className="text-sm font-medium text-slate-700">
               Orbit JSON payload
             </label>
             <button
               type="button"
               onClick={handlePasteFromClipboard}
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-700/80 bg-slate-900/80 px-2.5 py-1 text-[11px] font-medium text-slate-200 hover:border-sky-500/70 hover:text-sky-200"
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-sm font-medium text-slate-700 hover:border-orange-300 hover:text-orange-600"
             >
               <ClipboardPaste className="h-3.5 w-3.5" />
               Paste from clipboard
@@ -149,23 +149,23 @@ export function DataCenterPage() {
             onChange={(e) => setRawJson(e.target.value)}
             spellCheck={false}
             rows={16}
-            className="w-full resize-y rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs font-mono text-slate-100 shadow-inner shadow-slate-950/60 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/40"
+            className="w-full resize-y rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-mono text-slate-900 shadow-inner shadow-slate-100 outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-200/80"
           />
           <button
             type="submit"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-sky-500 px-3 py-2 text-xs font-semibold text-white shadow-lg shadow-sky-500/40 hover:bg-sky-400"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-orange-500 px-3 py-2 text-sm font-semibold text-white shadow-lg shadow-orange-300/70 hover:bg-orange-400"
           >
             <Database className="h-3.5 w-3.5" />
             Save to localStorage
           </button>
         </div>
 
-        <div className="space-y-3 text-xs">
-          <div className="rounded-xl border border-slate-800 bg-slate-900/70 p-3">
-            <p className="text-[11px] font-semibold text-slate-200 mb-1.5">
+        <div className="space-y-3 text-sm">
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">
+            <p className="text-xs font-semibold text-slate-700 mb-1.5">
               Expected shape
             </p>
-            <pre className="overflow-x-auto whitespace-pre-wrap break-words text-[11px] text-slate-300">
+            <pre className="overflow-x-auto whitespace-pre-wrap break-words text-xs text-slate-600">
 {`{
   "profiles": [...],
   "conversations": [...]
@@ -174,11 +174,11 @@ export function DataCenterPage() {
           </div>
 
           {status === 'success' && (
-            <div className="flex items-start gap-2 rounded-xl border border-emerald-700/80 bg-emerald-950/40 p-2.5 text-[11px] text-emerald-100">
-              <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 text-emerald-400" />
+            <div className="flex items-start gap-2 rounded-xl border border-emerald-200 bg-emerald-50 p-2.5 text-sm text-emerald-800">
+              <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 text-emerald-500" />
               <p>
                 Data saved under
-                <code className="mx-1 rounded bg-emerald-900/70 px-1 py-0.5 text-[10px]">
+                <code className="mx-1 rounded bg-emerald-900/70 px-1 py-0.5 text-[11px]">
                   current_orbit_data
                 </code>
                 . Your dashboard will now analyze these profiles and conversations.
@@ -187,13 +187,13 @@ export function DataCenterPage() {
           )}
 
           {status === 'error' && error && (
-            <div className="flex items-start gap-2 rounded-xl border border-rose-800/80 bg-rose-950/50 p-2.5 text-[11px] text-rose-100">
-              <AlertTriangle className="mt-0.5 h-3.5 w-3.5 text-rose-400" />
+            <div className="flex items-start gap-2 rounded-xl border border-rose-200 bg-rose-50 p-2.5 text-sm text-rose-700">
+              <AlertTriangle className="mt-0.5 h-3.5 w-3.5 text-rose-500" />
               <p>{error}</p>
             </div>
           )}
 
-          <p className="text-[11px] leading-relaxed text-slate-400">
+          <p className="text-sm leading-relaxed text-slate-500">
             Nothing is sent to a server. Orbit Hub only reads and writes to your browser&apos;s
             localStorage, so it&apos;s safe to experiment with test data from your extension.
           </p>

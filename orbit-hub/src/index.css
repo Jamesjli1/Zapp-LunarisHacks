@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -9,4 +9,7 @@ body {
   min-height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text',
     'Segoe UI', sans-serif;
+  font-size: 15px;
+  background-color: #f3f4f6; /* slate-100 */
+  color: #0f172a; /* slate-900 */
 }

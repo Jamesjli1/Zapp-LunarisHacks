@@ -141,40 +141,40 @@ export function ChatPanel({ profile }: Props) {
       <div className="space-y-2.5">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <div className="relative flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 via-violet-500 to-emerald-400 text-[11px] font-semibold text-white shadow-md shadow-sky-500/50">
+            <div className="relative flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 via-amber-400 to-rose-400 text-[11px] font-semibold text-white shadow-md shadow-orange-300/60">
               {avatarInitial}
               <div className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-slate-950 ring-2 ring-slate-900">
                 <UserCircle2 className="h-3 w-3 text-sky-300" />
               </div>
             </div>
-            <div className="text-[11px] leading-tight">
-              <p className="font-medium text-slate-100">
+            <div className="text-sm leading-tight">
+              <p className="font-medium text-slate-900">
                 {profile?.name ?? 'Select a profile in your data'}
               </p>
-              <p className="text-slate-400">
+              <p className="text-slate-500">
                 Notes, reflections, and prompts stay tied to this person.
               </p>
             </div>
           </div>
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-900/80 px-2 py-1 text-[10px] text-slate-300">
-            <Sparkles className="h-3 w-3 text-sky-300" />
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-orange-50 px-2 py-1 text-[10px] text-orange-700">
+            <Sparkles className="h-3 w-3 text-orange-400" />
             <span>AI assistant via backend</span>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 rounded-xl border border-slate-800/80 bg-slate-950/80 p-2.5 max-h-52 overflow-y-auto">
+        <div className="flex flex-col gap-2 rounded-xl border border-orange-100 bg-orange-50/70 p-3 max-h-64 overflow-y-auto">
           {messages.map((m) => (
             <div
               key={m.id}
-              className={`flex ${
+              className={`flex text-sm ${
                 m.from === 'you' ? 'justify-end' : 'justify-start'
-              } text-[11px]`}
+              }`}
             >
               <div
-                className={`max-w-[80%] rounded-lg px-2 py-1.5 ${
+                className={`max-w-[80%] rounded-lg px-3 py-2 text-sm leading-relaxed whitespace-pre-wrap ${
                   m.from === 'you'
-                    ? 'bg-sky-600 text-slate-50'
-                    : 'bg-slate-800/80 text-slate-100'
+                    ? 'bg-orange-500 text-white'
+                    : 'bg-white text-slate-800 border border-orange-100'
                 }`}
               >
                 {m.text}
@@ -182,7 +182,7 @@ export function ChatPanel({ profile }: Props) {
             </div>
           ))}
           {messages.length === 0 && (
-            <p className="text-[11px] text-slate-500 text-center py-4">
+            <p className="text-sm text-slate-500 text-center py-4">
               Start typing a thought or draft message. We&apos;ll keep a running, searchable trace
               here.
             </p>
@@ -195,26 +195,26 @@ export function ChatPanel({ profile }: Props) {
             onChange={(e) => setInput(e.target.value)}
             rows={2}
             placeholder="Capture a reflection, a draft message, or something you noticed in the conversation…"
-            className="min-h-[40px] flex-1 resize-none rounded-lg border border-slate-800 bg-slate-950 px-2.5 py-1.5 text-[11px] text-slate-100 outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500/40"
+            className="min-h-[48px] flex-1 resize-none rounded-lg border border-orange-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-orange-400 focus:ring-1 focus:ring-orange-200/80"
           />
           <button
             type="submit"
-            className="inline-flex items-center justify-center rounded-lg bg-sky-500 px-2.5 py-2 text-[11px] font-semibold text-white shadow-md shadow-sky-500/40 hover:bg-sky-400"
+            className="inline-flex items-center justify-center rounded-lg bg-orange-500 px-3 py-2.5 text-sm font-semibold text-white shadow-md shadow-orange-300/70 hover:bg-orange-400"
           >
             <Send className="h-3.5 w-3.5" />
           </button>
         </form>
 
         {suggestions.length > 0 && (
-          <div className="rounded-lg bg-slate-900/80 p-2.5 text-[11px] text-slate-200 space-y-1.5">
-            <p className="flex items-center gap-1.5 text-slate-300">
-              <Sparkles className="h-3 w-3 text-sky-300" />
+          <div className="rounded-lg bg-white p-3 text-sm text-slate-700 space-y-1.5 border border-orange-100">
+            <p className="flex items-center gap-1.5 text-slate-800">
+              <Sparkles className="h-3 w-3 text-orange-400" />
               Suggested prompts
             </p>
             <ul className="space-y-0.5">
               {suggestions.map((prompt) => (
                 <li key={prompt} className="flex gap-1.5">
-                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400" />
+                  <span className="mt-1 h-1.5 w-1.5 rounded-full bg-orange-400" />
                   <span>{prompt}</span>
                 </li>
               ))}

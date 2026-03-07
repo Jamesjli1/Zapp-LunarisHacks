@@ -15,9 +15,9 @@ export function FeedbackPanel({ recentConversation }: Props) {
       accent="violet"
     >
       {recentConversation ? (
-        <div className="space-y-1.5 text-[11px] text-slate-200">
+        <div className="space-y-1.5 text-sm text-slate-700">
           <p className="flex items-center gap-1.5">
-            <ThumbsUp className="h-3.5 w-3.5 text-emerald-300" />
+            <ThumbsUp className="h-3.5 w-3.5 text-emerald-400" />
             <span>
               This interaction scored high on{' '}
               <span className="font-semibold">curiosity and emotional safety</span>.
@@ -36,18 +36,18 @@ export function FeedbackPanel({ recentConversation }: Props) {
               </span>
             </li>
           </ul>
-          <div className="mt-2 flex items-center justify-between rounded-lg bg-slate-900/80 px-2.5 py-1.5">
-            <div className="flex items-center gap-1.5 text-[11px] text-slate-300">
-              <Gauge className="h-3.5 w-3.5 text-sky-300" />
+          <div className="mt-2 flex items-center justify-between rounded-lg bg-slate-100 px-3 py-2">
+            <div className="flex items-center gap-1.5 text-sm text-slate-800">
+              <Gauge className="h-3.5 w-3.5 text-sky-400" />
               <span className="font-medium">Learning your preferences</span>
             </div>
-            <p className="text-[10px] text-slate-400">
+            <p className="text-xs text-slate-500">
               We&apos;ll tune prompts to match the tone and pacing you seem to prefer.
             </p>
           </div>
         </div>
       ) : (
-        <p className="text-xs text-slate-400">
+        <p className="text-sm text-slate-500">
           After each saved conversation, Orbit Hub will surface 1–2 things that went well and tune
           future prompts to your style.
         </p>

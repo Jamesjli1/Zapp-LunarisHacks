@@ -10,11 +10,11 @@ type FeatureCardProps = {
 }
 
 const accentClasses: Record<NonNullable<FeatureCardProps['accent']>, string> = {
-  sky: 'from-sky-500/20 to-sky-400/5 border-sky-900/70',
-  violet: 'from-violet-500/20 to-violet-400/5 border-violet-900/70',
-  emerald: 'from-emerald-500/20 to-emerald-400/5 border-emerald-900/70',
-  amber: 'from-amber-500/20 to-amber-400/5 border-amber-900/70',
-  rose: 'from-rose-500/20 to-rose-400/5 border-rose-900/70',
+  sky: 'from-sky-50 to-slate-50 border-sky-200',
+  violet: 'from-violet-50 to-slate-50 border-violet-200',
+  emerald: 'from-emerald-50 to-slate-50 border-emerald-200',
+  amber: 'from-amber-50 to-slate-50 border-amber-200',
+  rose: 'from-rose-50 to-slate-50 border-rose-200',
 }
 
 export function FeatureCard({
@@ -26,21 +26,21 @@ export function FeatureCard({
 }: FeatureCardProps) {
   return (
     <section
-      className={`relative overflow-hidden rounded-2xl border bg-slate-900/70 px-4 py-4 sm:px-5 sm:py-5 shadow-lg shadow-slate-950/60 backdrop-blur-sm transition hover:border-slate-600/90 hover:bg-slate-900 ${
+      className={`relative overflow-hidden rounded-2xl border bg-slate-50 px-4 py-4 sm:px-5 sm:py-5 shadow-sm shadow-slate-200/80 backdrop-blur-sm transition hover:shadow-md hover:-translate-y-0.5 ${
         accentClasses[accent]
       }`}
     >
-      <div className="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-to-br from-slate-50/5 via-sky-300/10 to-transparent blur-2xl" />
+      <div className="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-to-br from-orange-200/40 via-amber-100/40 to-transparent blur-2xl" />
       <div className="flex items-start gap-3">
-        <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900/90 ring-1 ring-slate-700/80">
-          <Icon className="h-4 w-4 text-sky-400" />
+        <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl bg-orange-50 ring-1 ring-orange-200">
+          <Icon className="h-4 w-4 text-orange-500" />
         </div>
         <div className="flex-1 space-y-1.5">
-          <h3 className="text-sm font-semibold text-slate-50">{title}</h3>
+          <h3 className="text-base font-semibold text-slate-900">{title}</h3>
           {description && (
-            <p className="text-xs text-slate-400 leading-relaxed">{description}</p>
+            <p className="text-sm text-slate-600 leading-relaxed">{description}</p>
           )}
-          {children && <div className="mt-3 text-xs text-slate-200">{children}</div>}
+          {children && <div className="mt-3 text-sm text-slate-700">{children}</div>}
         </div>
       </div>
     </section>

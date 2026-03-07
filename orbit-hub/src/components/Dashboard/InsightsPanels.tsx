@@ -1,6 +1,7 @@
-import { Activity, BadgeCheck, Briefcase, MessagesSquare, Target } from 'lucide-react'
+import { Activity, Briefcase, MessagesSquare, Target } from 'lucide-react'
 import type { OrbitConversation, OrbitData, OrbitProfile } from '../../types/orbit'
 import { FeatureCard } from '../FeatureCard'
+import { ChatPanel } from './ChatPanel'
 
 function summarizeConversationText(conversation: OrbitConversation): string {
   const all = conversation.messages?.map((m) => m.text).join(' ') ?? ''
@@ -57,43 +58,7 @@ export function InsightsPanels({ data, activeProfile }: Props) {
 
   return (
     <div className="grid gap-3 sm:grid-cols-2">
-      <FeatureCard
-        title="Conversation feedback"
-        description="Quick notes on what went well in your recent chats so you can double down on it."
-        icon={BadgeCheck}
-        accent="emerald"
-      >
-        {primaryConversation ? (
-          <div className="space-y-1.5 text-[11px]">
-            <p className="text-slate-300">
-              We noticed you had a{' '}
-              <span className="font-semibold text-emerald-300">
-                {primaryConversation.messages.length >= 6
-                  ? 'deep, high-signal'
-                  : 'short but meaningful'}
-              </span>{' '}
-              conversation about <span className="font-semibold">{primaryConversation.topic}</span>.
-            </p>
-            <ul className="mt-1.5 space-y-0.5 text-slate-200">
-              <li className="flex gap-1.5">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                <span>
-                  You asked follow-up questions and let them talk. Keep that exploration energy.
-                </span>
-              </li>
-              <li className="flex gap-1.5">
-                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                <span>You mirrored their language, which makes people feel understood.</span>
-              </li>
-            </ul>
-          </div>
-        ) : (
-          <p className="text-xs text-slate-400">
-            Once you have a few conversations stored, we&apos;ll surface highlights and what made
-            them go well here.
-          </p>
-        )}
-      </FeatureCard>
+      <ChatPanel profile={activeProfile} />
 
       <FeatureCard
         title="Monitor conversations"
@@ -102,20 +67,20 @@ export function InsightsPanels({ data, activeProfile }: Props) {
         accent="violet"
       >
         {ranked.length > 0 ? (
-          <ul className="space-y-1.5 text-[11px] text-slate-200">
+          <ul className="space-y-1.5 text-sm text-slate-700">
             {ranked.map((c) => (
-              <li key={c.id} className="rounded-md bg-slate-900/80 p-2">
-                <p className="mb-0.5 text-[11px] font-semibold text-slate-50">
+              <li key={c.id} className="rounded-md bg-white p-3 border border-slate-200">
+                <p className="mb-0.5 text-sm font-semibold text-slate-900">
                   {c.topic ?? 'Conversation'}
                 </p>
-                <p className="text-[11px] text-slate-300">
+                <p className="text-sm text-slate-600">
                   {summarizeConversationText(c)}
                 </p>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-xs text-slate-400">
+          <p className="text-sm text-slate-500">
             No conversations found in your JSON yet. Add one and we&apos;ll auto-generate short
             memory snippets.
           </p>
@@ -129,13 +94,13 @@ export function InsightsPanels({ data, activeProfile }: Props) {
         accent="amber"
       >
         {interests.length > 0 ? (
-          <div className="space-y-1.5 text-[11px]">
-            <p className="text-slate-300">
+          <div className="space-y-1.5 text-sm">
+            <p className="text-slate-700">
               They seem interested in{' '}
               <span className="font-semibold">{interests.slice(0, 4).join(', ')}</span>.
             </p>
             {companySuggestions.length > 0 && (
-              <ul className="space-y-0.5 text-slate-200">
+              <ul className="space-y-0.5 text-slate-700">
                 {companySuggestions.map((suggestion) => (
                   <li key={suggestion} className="flex gap-1.5">
                     <Target className="mt-0.5 h-3 w-3 text-amber-300" />
@@ -146,7 +111,7 @@ export function InsightsPanels({ data, activeProfile }: Props) {
             )}
           </div>
         ) : (
-          <p className="text-xs text-slate-400">
+          <p className="text-sm text-slate-500">
             Add interests for this profile in your JSON payload and we&apos;ll recommend themed
             companies and people to research.
           </p>
@@ -160,9 +125,9 @@ export function InsightsPanels({ data, activeProfile }: Props) {
         accent="rose"
       >
         {conversations.length > 0 ? (
-          <ul className="space-y-1.5 text-[11px] text-slate-200">
+          <ul className="space-y-1.5 text-sm text-slate-700">
             {conversations.slice(0, 3).map((c) => (
-              <li key={c.id} className="flex gap-1.5 rounded-md bg-slate-900/80 p-2">
+              <li key={c.id} className="flex gap-1.5 rounded-md bg-white p-3 border border-slate-200">
                 <span className="mt-1 h-1.5 w-1.5 rounded-full bg-rose-400" />
                 <span>
                   It&apos;s a good time to check in about{' '}
@@ -175,7 +140,7 @@ export function InsightsPanels({ data, activeProfile }: Props) {
             ))}
           </ul>
         ) : (
-          <p className="text-xs text-slate-400">
+          <p className="text-sm text-slate-500">
             As you add conversations, we&apos;ll start proposing simple, actionable check-in
             moments here.
           </p>

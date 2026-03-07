@@ -27,8 +27,8 @@ export function QuestsPanel({ profile }: Props) {
       icon={Flag}
       accent="emerald"
     >
-      <div className="space-y-1.5 text-[11px] text-slate-200">
-        <p className="flex items-center gap-1.5 text-slate-300">
+      <div className="space-y-1.5 text-sm text-slate-700">
+        <p className="flex items-center gap-1.5 text-slate-800">
           <Sparkles className="h-3.5 w-3.5 text-emerald-300" />
           Complete a quest each week to keep this orbit warm.
         </p>

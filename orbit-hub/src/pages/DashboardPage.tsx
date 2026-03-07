@@ -6,7 +6,6 @@ import { ProfilePanel } from '../components/Dashboard/ProfilePanel'
 import { InsightsPanels } from '../components/Dashboard/InsightsPanels'
 import { QuestsPanel } from '../components/Dashboard/QuestsPanel'
 import { FeedbackPanel } from '../components/Dashboard/FeedbackPanel'
-import { ChatPanel } from '../components/Dashboard/ChatPanel'
 
 export function DashboardPage() {
   const data = useMemo(() => getOrbitData(), [])
@@ -28,8 +27,8 @@ export function DashboardPage() {
     <div className="space-y-4">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-slate-50">Orbit dashboard</h2>
-          <p className="text-xs text-slate-400 max-w-xl">
+          <h2 className="text-2xl font-semibold text-slate-900">Orbit dashboard</h2>
+          <p className="text-sm text-slate-600 max-w-xl">
             See who&apos;s in your orbit, what you talked about, and get gentle prompts to stay in
             touch.
           </p>
@@ -37,7 +36,7 @@ export function DashboardPage() {
 
         {data?.profiles && data.profiles.length > 0 && (
           <div className="flex items-center gap-2">
-            <span className="text-[11px] text-slate-400">Focused profile</span>
+            <span className="text-xs text-slate-500">Focused profile</span>
             <div className="relative">
               <select
                 value={activeProfileId}
@@ -56,10 +55,7 @@ export function DashboardPage() {
         )}
       </div>
 
-      <div className="grid gap-3 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.5fr)]">
-        <ProfilePanel profile={activeProfile} />
-        <ChatPanel profile={activeProfile} />
-      </div>
+      <ProfilePanel profile={activeProfile} />
 
       <InsightsPanels data={data ?? undefined} activeProfile={activeProfile} />
 
